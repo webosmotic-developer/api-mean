@@ -16,7 +16,7 @@ angular.module('apiMeanApp')
        * @param  {Function} callback - optional
        * @return {Promise}
        */
-      login: function(user, callback) {
+      signin: function(user, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
 

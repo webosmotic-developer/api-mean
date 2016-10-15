@@ -17,6 +17,9 @@ angular.module('apiMeanApp')
         params: {
           id:'me'
         }
-      }
+      },
+        update: {
+            method: 'PUT'
+        }
 	  });
   });

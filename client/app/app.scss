@@ -12,10 +12,15 @@
      }
    }
  }
+.active{
+    background-color: #7986cb;
+    color: #fff;
+}
+
 
 // Component styles are injected through grunt
 // injector
-@import 'account/login/login.scss';
-@import 'admin/admin.scss';
-@import 'main/main.scss';
+@import 'account/account.scss';
+@import 'account/settings/userModal/userModal.scss';
+@import 'scss/margin-padding.scss';
 // endinjector
