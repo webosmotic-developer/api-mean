@@ -46,10 +46,9 @@
                         <input required password-verify="signup.user.password" type="password" name="password_c"
                                ng-model="signup.user.password_c">
 
-                        <p ng-show="form.password_c.$error.passwordVerify" class="error">Passwords do not match.</p>
-
-                        <div ng-messages="form.password.$error">
+                        <div ng-messages="form.password_c.$error">
                             <div ng-message="required">This is required.</div>
+                            <div ng-message="passwordVerify">Password doesn't match.</div>
                         </div>
                     </md-input-container>
                 </div>

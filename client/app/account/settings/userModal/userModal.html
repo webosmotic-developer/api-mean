@@ -52,11 +52,11 @@
 
                     <div ng-messages="userModalForm.password_c.$error">
                         <div ng-message="required">This is required.</div>
-                        <div ng-message="passwordVerify"> Password mucst match.</div>
+                        <div ng-message="passwordVerify"> Password doesn't match.</div>
                     </div>
                 </md-input-container>
-                <md-input-container>
 
+                <md-input-container>
                     <md-icon class="md-primary" md-font-set="fa fa-lg fa-briefcase m-t-5"></md-icon>
                     <label>Role</label>
                     <md-select ng-model="userModal.user.role">

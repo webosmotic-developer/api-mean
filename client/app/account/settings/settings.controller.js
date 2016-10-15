@@ -2,7 +2,7 @@
 
 angular.module('apiMeanApp')
     .controller('SettingsCtrl', function ($scope, User, Auth, toastr, $mdDialog) {
-        
+
         var vm = this;
         vm.isAdmin = Auth.isAdmin();
         vm.user = Auth.getCurrentUser();
@@ -21,11 +21,11 @@ angular.module('apiMeanApp')
             if (form.$valid) {
                 Auth.changePassword(vm.user.oldPassword, vm.user.newPassword)
                     .then(function () {
-                        $scope.changePassword.$setPristine();
+                        form.$setPristine();
                         toastr.success('Password successfully changed.');
                     })
-                    .catch(function () {
-                        form.password.$setValidity('mongoose', false);
+                    .catch(function (error) {
+                        toastr.error('Wrong current password')
                     });
             }
         };

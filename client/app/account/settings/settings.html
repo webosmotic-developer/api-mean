@@ -1,99 +1,94 @@
 <md-content>
     <div layout="row" layout-xs="column" layout-margin>
         <!-- START : Update Profile Section-->
-        <div layout="column" class="md-whiteframe-z1 margin-5" flex>
+        <div layout="column" class="md-whiteframe-z1" flex>
             <md-toolbar class="md-hue-1">
                 <div class="md-toolbar-tools">
                     <h3 class="md-toolbar-tools" layout-align="center center"> Update Profile</h3>
                 </div>
             </md-toolbar>
             <md-content flex layout-margin>
-                <div layout-padding>
-                    <form name="updateProfile" layout="column" novalidate>
-                        <md-input-container>
-                            <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-user m-t-5"></md-icon>
-                            <input required type="text" name="name" placeholder="Name" ng-model="setting.user.name">
+                <form name="updateProfile" layout="column" novalidate>
+                    <md-input-container>
+                        <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-user m-t-5"></md-icon>
+                        <input required type="text" name="name" placeholder="Name" ng-model="setting.user.name">
 
-                            <div ng-messages="updateProfile.name.$error">
-                                <div ng-message="required">
-                                    This field is required.
-                                </div>
+                        <div ng-messages="updateProfile.name.$error">
+                            <div ng-message="required">
+                                This field is required.
                             </div>
-                        </md-input-container>
-                        <md-input-container class="">
-                            <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-envelope m-t-5"></md-icon>
-                            <input type="text" name="email" placeholder="Email" ng-model="setting.user.email" disabled>
-                        </md-input-container>
-                        <md-input-container class="">
-                            <label>Role</label>
-                            <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-briefcase m-t-5"></md-icon>
-                            <input required type="text" placeholder="Role" name="role"
-                                   ng-model="setting.user.role" disabled/>
-                        </md-input-container>
-                        <md-button type="submit" ng-click="updateProfile.$valid && setting.fnUpdateProfile()"
-                                   class="md-raised md-primary md-hue-1">Update
-                        </md-button>
-                    </form>
-                </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="">
+                        <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-envelope m-t-5"></md-icon>
+                        <input type="text" name="email" placeholder="Email" ng-model="setting.user.email" disabled>
+                    </md-input-container>
+                    <md-input-container class="">
+                        <label>Role</label>
+                        <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-briefcase m-t-5"></md-icon>
+                        <input required type="text" placeholder="Role" name="role"
+                               ng-model="setting.user.role" disabled/>
+                    </md-input-container>
+                    <md-button type="submit" ng-click="updateProfile.$valid && setting.fnUpdateProfile()"
+                               class="md-raised md-primary md-hue-1">Update
+                    </md-button>
+                </form>
             </md-content>
         </div>
         <!-- END : Update Profile Section-->
 
         <!-- START : Change Password Section-->
-        <div layout="column" class="md-whiteframe-z1 margin-5" flex>
+        <div layout="column" class="md-whiteframe-z1" flex>
             <md-toolbar class="md-raised md-primary md-hue-1">
                 <div class="md-toolbar-tools"><h3 class="text-center text-white">Change Password</h3></div>
             </md-toolbar>
             <md-content layout="column" layout-margin>
-                <div layout-padding>
-                    <form class="form" layout="column" name="changePassword" novalidate>
-                        <md-input-container>
-                            <label>Current Password</label>
-                            <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-lock m-t-5"></md-icon>
-                            <input required type="password" name="password" class="form-control"
-                                   ng-model="setting.user.oldPassword"/>
+                <form class="form" layout="column" name="changePassword" novalidate>
+                    <md-input-container>
+                        <label>Current Password</label>
+                        <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-lock m-t-5"></md-icon>
+                        <input required type="password" name="password" class="form-control"
+                               ng-model="setting.user.oldPassword"/>
 
-                            <div ng-messages="changePassword.password.$error">
-                                <div ng-message="required">
-                                    This field is required.
-                                </div>
+                        <div ng-messages="changePassword.password.$error">
+                            <div ng-message="required">
+                                This field is required.
                             </div>
-                        </md-input-container>
+                        </div>
+                    </md-input-container>
 
-                        <md-input-container>
-                            <label>New Password</label>
-                            <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-key m-t-5"></md-icon>
-                            <input type="password" name="newPassword" class="form-control"
-                                   ng-model="setting.user.newPassword"
-                                   ng-minlength="3"
-                                   required/>
+                    <md-input-container>
+                        <label>New Password</label>
+                        <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-key m-t-5"></md-icon>
+                        <input type="password" name="newPassword" class="form-control"
+                               ng-model="setting.user.newPassword"
+                               ng-minlength="3"
+                               required/>
 
-                            <div ng-messages="changePassword.newPassword.$error">
-                                <div ng-message="required">
-                                    This field is required.
-                                </div>
+                        <div ng-messages="changePassword.newPassword.$error">
+                            <div ng-message="required">
+                                This field is required.
                             </div>
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Re-type New Password </label>
-                            <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-key m-t-5"></md-icon>
-                            <input required type="password" name="newPassword_c" class="form-control"
-                                   ng-model="setting.user.newPassword_c"
-                                   password-verify="setting.user.newPassword"/>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Re-type New Password </label>
+                        <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-key m-t-5"></md-icon>
+                        <input required type="password" name="newPassword_c" class="form-control"
+                               ng-model="setting.user.newPassword_c"
+                               password-verify="setting.user.newPassword"/>
 
-                            <div ng-messages="changePassword.newPassword_c.$error">
-                                <div ng-message="required">
-                                    This field is required.
-                                </div>
+                        <div ng-messages="changePassword.newPassword_c.$error">
+                            <div ng-message="required">
+                                This field is required.
                             </div>
-                        </md-input-container>
-                        <md-button type="submit" class="md-raised md-primary md-hue-1"
-                                   ng-click="changePassword.$valid && setting.fnChangePassword(changePassword)">
-                            Save changes
-                        </md-button>
-                    </form>
-                </div>
-
+                        </div>
+                    </md-input-container>
+                    <md-button type="submit" class="md-raised md-primary md-hue-1"
+                               ng-click="changePassword.$valid && setting.fnChangePassword(changePassword)">
+                        Save changes
+                    </md-button>
+                </form>
             </md-content>
         </div>
         <!-- END : Change Password Section-->
