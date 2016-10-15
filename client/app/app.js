@@ -9,7 +9,6 @@ angular.module('apiMeanApp', [
     'btford.socket-io',
     'ui.router',
     'ngMaterial',
-    'ui.grid',
     'toastr'
 ])
     .config(function($mdThemingProvider){

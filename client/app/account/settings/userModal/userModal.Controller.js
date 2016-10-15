@@ -26,7 +26,7 @@ angular.module('apiMeanApp')
                 })
             } else if (!user._id) {
                 User.save(user, function () {
-                    toastr.success('successfully', 'User Added');
+                    toastr.success('User Added successfully');
                     vm.fnCloseDialog();
                 }, function (error) {
                     toastr.error(error.message);

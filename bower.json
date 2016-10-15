@@ -13,9 +13,15 @@
     "lodash": "~2.4.1",
     "angular-socket-io": "~0.6.0",
     "angular-ui-router": "~0.2.15",
-    "font-awesome": "fontawesome#^4.6.3",
-    "components-font-awesome": "^4.6.3",
-    "angular-toastr": "^2.1.1"
+    "angular-toastr": "^2.1.1",
+    "font-awesome": "^4.6.3"
+  },
+  "overrides": {
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.min.css"
+      ]
+    }
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

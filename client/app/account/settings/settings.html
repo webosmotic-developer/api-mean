@@ -30,7 +30,7 @@
                             <input required type="text" placeholder="Role" name="role"
                                    ng-model="setting.user.role" disabled/>
                         </md-input-container>
-                        <md-button type="submit" ng-click="updateProfile.$submitted && setting.fnUpdateProfile()"
+                        <md-button type="submit" ng-click="updateProfile.$valid && setting.fnUpdateProfile()"
                                    class="md-raised md-primary md-hue-1">Update
                         </md-button>
                     </form>
@@ -79,8 +79,7 @@
                             <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-key m-t-5"></md-icon>
                             <input required type="password" name="newPassword_c" class="form-control"
                                    ng-model="setting.user.newPassword_c"
-                                   password-verify="setting.user.newPassword"
-                                />
+                                   password-verify="setting.user.newPassword"/>
 
                             <div ng-messages="changePassword.newPassword_c.$error">
                                 <div ng-message="required">
@@ -88,10 +87,9 @@
                                 </div>
                             </div>
                         </md-input-container>
-                        <md-button type="submit"
-                                   ng-click="changePassword.$submitted && setting.fnChangePassword(changePassword)"
-                                   class="md-raised md-primary md-hue-1">Save
-                            changes
+                        <md-button type="submit" class="md-raised md-primary md-hue-1"
+                                   ng-click="changePassword.$valid && setting.fnChangePassword(changePassword)">
+                            Save changes
                         </md-button>
                     </form>
                 </div>
@@ -105,10 +103,15 @@
     <div class="users-settings-container" layout="row" layout-margin ng-if="setting.user.role=='admin'">
         <div layout="column" md-whiteframe="4" flex>
             <md-toolbar class="md-hue-1">
-                <div class="md-toolbar-tools" layout-align="space-between center">
-                    <div class="md-headline">Users Info</div>
-                    <md-button class="md-fab md-mini" aria-label="Add" ng-click="setting.fnAddUser();">
-                        <md-icon md-font-set="fa fa-lg fa-fw fa-plus m-t-10"></md-icon>
+                <div class="md-toolbar-tools">
+                    <div class="md-headline">Users</div>
+                    <span flex=""></span>
+                    <md-button class="md-fab md-mini md-primary" aria-label="Favorite"
+                               ng-click="setting.fnAddUser({role:'user'});">
+                        <md-tooltip md-direction="left">
+                            Add User
+                        </md-tooltip>
+                        <md-icon md-font-set="fa fa-2x fa-plus"></md-icon>
                     </md-button>
                 </div>
             </md-toolbar>

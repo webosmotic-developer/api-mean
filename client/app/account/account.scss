@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+.users-settings-container{
+    min-height: 500px;
+}
+
 @media (max-width: 767px) {
     .login-card, .register-card {
         max-width: 100%;

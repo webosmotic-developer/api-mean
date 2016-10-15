@@ -34,7 +34,7 @@
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
-                <md-input-container ng-hide="userModal.user._id">
+                <md-input-container ng-if="!userModal.user._id">
                     <label>Password</label>
                     <md-icon class="md-primary" md-font-set="fa fa-lg fa-lock m-t-5"></md-icon>
                     <input required name="password" type="password" ng-model="userModal.user.password">
@@ -43,7 +43,7 @@
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
-                <md-input-container ng-hide="userModal.user._id">
+                <md-input-container ng-if="!userModal.user._id">
                     <label>Confirm Password</label>
                     <md-icon class="md-primary" md-font-set="fa fa-lg fa-lock m-t-5"></md-icon>
                     <input required name="password_c" type="password" ng-model="userModal.user.password_c"
@@ -61,14 +61,12 @@
                     <md-select ng-model="userModal.user.role">
                         <md-option value="user">User</md-option>
                         <md-option value="guest">Guest</md-option>
-                        <md-option value="admin">Admin</md-option>
                     </md-select>
                 </md-input-container>
                 <div layout="row" layout-align="end end">
-                    <md-button aria-label="Add"
-                               ng-click="userModalForm.$submitted && userModal.fnSaveUser(userModal.user);"
+                    <md-button aria-label="Add" type="submit"
+                               ng-click="userModalForm.$valid && userModal.fnSaveUser(userModal.user);"
                                class="md-raised md-primary"
-                               type="submit"
                                ng-bind="userModal.user._id ? 'Update user':'Add user'"></md-button>
                     <md-button class="md-raised md-warn" ng-click=" userModal.fnCloseDialogCancel()">
                         Cancel
