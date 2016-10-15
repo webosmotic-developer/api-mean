@@ -18,7 +18,7 @@
                 <md-input-container>
                     <label>Name</label>
                     <md-icon class="md-primary md-icon-float" md-font-set="fa fa-lg fa-user m-t-5"></md-icon>
-                    <input required name="name" type="text" ng-model="conCtrl.contact.name">
+                    <input required name="name" type="text" ng-model="conCtrl.contact.name"/>
                     <div ng-messages="contactForm.name.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
@@ -26,17 +26,18 @@
                 <md-input-container>
                     <label>Email</label>
                     <md-icon class="md-primary" md-font-set="fa fa-lg fa-envelope m-t-5"></md-icon>
-                    <input required type="email" name="email" ng-model="conCtrl.contact.email">
+                    <input required type="email" name="email" ng-model="conCtrl.contact.email"/>
 
                     <div ng-messages="contactForm.email.$error">
                         <div ng-message="required">This is required.</div>
+                        <div ng-message="email">This field must be a valid email address.</div>
                     </div>
 
                 </md-input-container>
                 <md-input-container>
                     <label>Phone</label>
                     <md-icon class="md-primary" md-font-set="fa fa-lg fa-phone m-t-5"></md-icon>
-                    <input required type="text" name="phone" ng-model="conCtrl.contact.phone">
+                    <input required type="number" name="phone" ng-model="conCtrl.contact.phone"/>
 
                     <div ng-messages="contactForm.phone.$error">
                         <div ng-message="required">This is required.</div>

@@ -30,8 +30,9 @@
                     <md-icon class="md-primary" md-font-set="fa fa-lg fa-envelope m-t-5"></md-icon>
                     <input required name="email" type="email" ng-model="userModal.user.email">
 
-                    <div ng-messages="userModalForm.name.$error">
+                    <div ng-messages="userModalForm.email.$error">
                         <div ng-message="required">This is required.</div>
+                        <div ng-message="email">This field must be a valid email address.</div>
                     </div>
                 </md-input-container>
                 <md-input-container ng-if="!userModal.user._id">

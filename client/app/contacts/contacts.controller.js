@@ -3,14 +3,17 @@
  */
 angular.module('apiMeanApp')
     .controller('contactsCtrl', function (User, toastr, $mdDialog, ContactsService, Auth) {
+
         var vm = this;
+        vm.user = Auth.getCurrentUser();
+
         vm.fnGetContacts = function () {
-            vm.ContactsArray = ContactsService.query();
+            vm.ContactsArray = User.getContacts({id: vm.user._id});
         };
 
         vm.fnAddContact = function () {
             $mdDialog.show({
-                locals: {user: Auth.getCurrentUser(), contact: {}},
+                locals: {user: vm.user, contact: {}},
                 templateUrl: 'app/contacts/contact/contact.html',
                 controller: 'contactCtrl as conCtrl'
             }).then(function () {
@@ -20,7 +23,7 @@ angular.module('apiMeanApp')
 
         vm.fnEditContact = function (contact) {
             $mdDialog.show({
-                locals: {user: Auth.getCurrentUser(), contact: contact},
+                locals: {user: vm.user, contact: contact},
                 templateUrl: 'app/contacts/contact/contact.html',
                 controller: 'contactCtrl as conCtrl'
             }).then(function () {
@@ -46,7 +49,6 @@ angular.module('apiMeanApp')
         };
 
         vm.fnInit = function () {
-
-        vm.fnGetContacts();
+            vm.fnGetContacts();
         }
     });
