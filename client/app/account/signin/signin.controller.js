@@ -25,7 +25,7 @@ angular.module('apiMeanApp')
             }
         };
 
-        vm.fnLoginOauth = function (provider) {
+        vm.fnSignInOauth = function (provider) {
             $window.location.href = '/auth/' + provider;
         };
     });

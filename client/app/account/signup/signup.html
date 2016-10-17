@@ -3,7 +3,20 @@
         <md-toolbar layout="column" layout-align="center center" class="md-hue-1"><h2 class="md-headline text-center">
             Sign Up</h2></md-toolbar>
         <md-card-content>
-            <!--<h2 class="md-display-1 text-center">Sign up</h2>-->
+            <div layout="row" layout-align="center center">
+                <md-button class="md-fab md-mini md-warn" aria-label="google"
+                           ng-click="signup.fnSignUpOauth('google')">
+                    <md-icon md-font-set="fa fa-lg fa-google-plus m-t-10"></md-icon>
+                </md-button>
+                <!--<md-button class="md-fab md-mini md-primary" aria-label="facebook"
+                           ng-click="signup.fnSignUpOauth('facebook')">
+                    <md-icon md-font-set="fa fa-lg fa-facebook m-t-10"></md-icon>
+                </md-button>
+                <md-button class="md-fab md-mini md-accent" aria-label="twitter"
+                           ng-click="signup.fnSignUpOauth('twitter')">
+                    <md-icon md-font-set="fa fa-lg fa-twitter m-t-10"></md-icon>
+                </md-button>-->
+            </div>
             <form name="form" ng-submit="signup.fnSignUp(form)" novalidate>
                 <div layout="column">
                     <md-input-container>
