@@ -23,15 +23,13 @@ angular.module('apiMeanApp')
                 $http.post('/auth/local', {
                     email: user.email,
                     password: user.password
-                }).
-                    success(function (data) {
-                        $cookieStore.put('token', data.token);
-                        currentUser = User.get(function () {
-                            deferred.resolve(data);
-                        });
-                        return cb();
-                    }).
-                    error(function (err) {
+                }).success(function (data) {
+                    $cookieStore.put('token', data.token);
+                    currentUser = User.get(function () {
+                        deferred.resolve(data);
+                    });
+                    return cb();
+                }).error(function (err) {
                         this.logout();
                         deferred.reject(err);
                         return cb(err);

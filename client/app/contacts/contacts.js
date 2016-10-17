@@ -9,7 +9,7 @@ angular.module('apiMeanApp')
             .state('main.contacts', {
                 url: 'contacts',
                 templateUrl: 'app/contacts/contacts.html',
-                controller: 'contactsCtrl as contacts',
+                controller: 'ContactsCtrl as contacts',
                 authenticate: true
             });
     });

@@ -13,7 +13,7 @@ angular.module('apiMeanApp')
             User.update(vm.user, function (data) {
                 toastr.success('Profile updated successfully');
             }, function (error) {
-                toastr.error('Error updating profile')
+                toastr.error('Error updating profile');
             });
         };
 
@@ -25,7 +25,7 @@ angular.module('apiMeanApp')
                         toastr.success('Password successfully changed.');
                     })
                     .catch(function (error) {
-                        toastr.error('Wrong current password')
+                        toastr.error('Wrong current password');
                     });
             }
         };
@@ -56,4 +56,10 @@ angular.module('apiMeanApp')
                 });
             });
         };
+
+        vm.fnSettings = function(){
+            if(vm.isAdmin){
+                vm.UsersArray = User.query();
+            }
+        }
     });

@@ -2,13 +2,17 @@
  * Created by LENOVO on 10/13/2016.
  */
 angular.module('apiMeanApp')
-    .controller('contactsCtrl', function (User, toastr, $mdDialog, ContactsService, Auth) {
+    .controller('ContactsCtrl', function (User, toastr, $mdDialog, ContactsService, Auth) {
 
         var vm = this;
         vm.user = Auth.getCurrentUser();
 
         vm.fnGetContacts = function () {
-            vm.ContactsArray = User.getContacts({id: vm.user._id});
+            Auth.isLoggedInAsync(function(isLoggedInAsync){
+                if(isLoggedInAsync){
+                    vm.ContactsArray = User.getContacts({id: vm.user._id});
+                }
+            });
         };
 
         vm.fnAddContact = function () {
