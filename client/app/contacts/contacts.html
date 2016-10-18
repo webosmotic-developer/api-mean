@@ -4,7 +4,8 @@
             <h2 ui-sref="main.contacts"><a href="javascript:void(0);">Contacts</a></h2>
             <span flex=""></span>
 
-            <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ng-click="contacts.fnAddContact();">
+            <md-button class="md-fab md-mini md-primary" aria-label="Favorite"
+                       ng-click="contacts.fnOpenContactModel();">
                 <md-tooltip md-direction="left">
                     Add Contact
                 </md-tooltip>
@@ -12,14 +13,16 @@
             </md-button>
         </div>
     </md-toolbar>
-
-    <div layout="row" ng-if="!contacts.ContactsArray.length" layout-align="center center">
+    <div ng-if="contacts.isContactsLoaded">
+        <md-progress-linear class="md-accent" md-mode="indeterminate"></md-progress-linear>
+    </div>
+    <div layout="row" ng-if="!contacts.isContactsLoaded && !contacts.contactsArray.length" layout-align="center center">
         <h1 class="md-headline m-b-35 m-t-35">Click "+" to add a contact.</h1>
     </div>
 
     <div layout="column" layout-fill flex>
         <md-content>
-            <md-list-item class="md-2-line" ng-repeat="cont in contacts.ContactsArray">
+            <md-list-item class="md-2-line" ng-repeat="cont in contacts.contactsArray">
                 <div class="md-list-item-text" layout="column">
                     <div class="md-title">{{ cont.name }}</div>
                     <div class="md-caption">Email: {{ cont.email }}</div>
@@ -28,7 +31,7 @@
                 <div class="md-secondary">
                     <md-icon md-font-set="fa fa-lg fa-fw fa-trash" class="md-warn"
                              ng-click="contacts.fnDeleteContact($event, cont._id)" aria-label="delete"></md-icon>
-                    <md-icon ng-click="contacts.fnEditContact(cont)" md-font-set="fa fa-lg fa-fw fa-pencil"
+                    <md-icon ng-click="contacts.fnOpenContactModel(cont)" md-font-set="fa fa-lg fa-fw fa-pencil"
                              class="md-primary" aria-label="Chat"></md-icon>
                 </div>
                 <md-divider></md-divider>

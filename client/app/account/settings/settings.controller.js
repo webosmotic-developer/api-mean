@@ -4,9 +4,17 @@ angular.module('apiMeanApp')
     .controller('SettingsCtrl', function ($scope, User, Auth, toastr, $mdDialog) {
 
         var vm = this;
+        vm.isUsersLoading = false;
         vm.isAdmin = Auth.isAdmin();
         vm.user = Auth.getCurrentUser();
-        vm.UsersArray = User.query();
+
+        vm.fnGetUsers = function () {
+            vm.isUsersLoading = true;
+            User.query(function (data) {
+                vm.usersArray = data;
+                vm.isUsersLoading = false;
+            });
+        };
 
         vm.fnUpdateProfile = function () {
             vm.submitAttempt = true;
@@ -36,7 +44,7 @@ angular.module('apiMeanApp')
                 templateUrl: 'app/account/settings/userModal/userModal.html',
                 controller: 'userModalCtrl as userModal'
             }).then(function () {
-                vm.UsersArray = User.query();
+                vm.fnGetUsers();
             });
         };
 
@@ -50,16 +58,16 @@ angular.module('apiMeanApp')
             $mdDialog.show(confirm).then(function () {
                 User.remove({id: id}, function () {
                     toastr.success('User successfully deleted');
-                    vm.UsersArray = User.query();
+                    vm.fnGetUsers();
                 }, function (error) {
                     toastr.error(error.message);
                 });
             });
         };
 
-        vm.fnSettings = function(){
-            if(vm.isAdmin){
-                vm.UsersArray = User.query();
+        vm.fnSettings = function () {
+            if (vm.isAdmin) {
+                vm.fnGetUsers();
             }
         }
     });

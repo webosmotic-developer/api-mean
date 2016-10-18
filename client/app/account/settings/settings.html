@@ -38,7 +38,7 @@
         <!-- END : Update Profile Section-->
 
         <!-- START : Change Password Section-->
-        <div layout="column" class="md-whiteframe-z1" flex>
+        <div layout="column" class="md-whiteframe-z1" flex ng-if="setting.user.provider=='local'">
             <md-toolbar class="md-raised md-primary md-hue-1">
                 <div class="md-toolbar-tools"><h3 class="text-center text-white">Change Password</h3></div>
             </md-toolbar>
@@ -110,12 +110,15 @@
                     </md-button>
                 </div>
             </md-toolbar>
+            <div ng-if="setting.isUsersLoading">
+                <md-progress-linear class="md-accent" md-mode="indeterminate"></md-progress-linear>
+            </div>
             <md-content>
-                <md-list-item class="md-2-line" ng-repeat="user in setting.UsersArray" ng-cloak>
+                <md-list-item class="md-2-line" ng-repeat="user in setting.usersArray" ng-cloak>
                     <div class="md-list-item-text" layout="column">
                         <div class="md-title">{{ user.name }}</div>
                         <div class="md-caption">Email: {{ user.email }}</div>
-                        <div class="md-caption">Role: {{ user.role }}</div>
+                        <div class="md-caption">Role: {{ user.role }} | Provider: {{ user.provider}}</div>
                     </div>
                     <div class="md-secondary">
                         <md-icon ng-click="setting.fnAddUser(user);" class="md-primary"

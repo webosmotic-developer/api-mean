@@ -2,7 +2,7 @@
  * Created by LENOVO on 10/14/2016.
  */
 angular.module('apiMeanApp')
-    .controller('contactCtrl', function ($mdDialog, ContactsService, toastr, user, contact) {
+    .controller('ContactCtrl', function ($mdDialog, ContactsService, toastr, user, contact) {
         var vm = this;
 
         vm.fnCloseDialog = function () {

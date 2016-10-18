@@ -1,16 +1,22 @@
-<md-content class="md-padding" >
+<div ng-if="signin.isSignIngIn">
+    <md-progress-linear class="md-accent" md-mode="indeterminate"></md-progress-linear>
+</div>
+<md-content class="md-padding">
     <md-card class="login-card">
-        <md-toolbar class="md-hue-1" layout="column" layout-align="center center"><h2 class="md-headline">Sign In</h2></md-toolbar>
+        <md-toolbar class="md-hue-1" layout="column" layout-align="center center"><h2 class="md-headline">Sign In</h2>
+        </md-toolbar>
         <md-card-content>
             <div layout="row" layout-align="center center">
                 <md-button class="md-fab md-mini md-warn" aria-label="google"
                            ng-click="signin.fnSignInOauth('google')">
                     <md-icon md-font-set="fa fa-lg fa-google-plus m-t-10"></md-icon>
                 </md-button>
-                <md-button class="md-fab md-mini md-primary" aria-label="facebook" ng-click="signin.fnSignInOauth('facebook')">
+                <md-button class="md-fab md-mini md-primary" aria-label="facebook"
+                           ng-click="signin.fnSignInOauth('facebook')">
                     <md-icon md-font-set="fa fa-lg fa-facebook m-t-10"></md-icon>
                 </md-button>
-                <md-button class="md-fab md-mini md-accent" aria-label="twitter" ng-click="signin.fnSignInOauth('twitter')">
+                <md-button class="md-fab md-mini md-accent" aria-label="twitter"
+                           ng-click="signin.fnSignInOauth('twitter')">
                     <md-icon md-font-set="fa fa-lg fa-twitter m-t-10"></md-icon>
                 </md-button>
             </div>

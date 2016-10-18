@@ -1,35 +1,26 @@
-/**
- * Created by LENOVO on 10/13/2016.
- */
+'use strict';
 angular.module('apiMeanApp')
-    .controller('ContactsCtrl', function (User, toastr, $mdDialog, ContactsService, Auth) {
+    .controller('ContactsCtrl', function (User, toastr, $mdDialog, ContactsService, Auth, socket) {
 
         var vm = this;
+        vm.isContactsLoaded = false;
         vm.user = Auth.getCurrentUser();
 
         vm.fnGetContacts = function () {
-            Auth.isLoggedInAsync(function(isLoggedInAsync){
-                if(isLoggedInAsync){
-                    vm.ContactsArray = User.getContacts({id: vm.user._id});
+            vm.isContactsLoaded = true;
+            Auth.isLoggedInAsync(function (isLoggedInAsync) {
+                if (isLoggedInAsync) {
+                    vm.contactsArray = User.getContacts({id: vm.user._id});
+                    vm.isContactsLoaded = false;
                 }
             });
         };
 
-        vm.fnAddContact = function () {
-            $mdDialog.show({
-                locals: {user: vm.user, contact: {}},
-                templateUrl: 'app/contacts/contact/contact.html',
-                controller: 'contactCtrl as conCtrl'
-            }).then(function () {
-                vm.fnGetContacts();
-            });
-        };
-
-        vm.fnEditContact = function (contact) {
+        vm.fnOpenContactModel = function (contact) {
             $mdDialog.show({
                 locals: {user: vm.user, contact: contact},
                 templateUrl: 'app/contacts/contact/contact.html',
-                controller: 'contactCtrl as conCtrl'
+                controller: 'ContactCtrl as conCtrl'
             }).then(function () {
                 vm.fnGetContacts();
             });
