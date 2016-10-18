@@ -14,23 +14,21 @@ angular.module('apiMeanApp')
                     name: vm.user.name,
                     email: vm.user.email,
                     password: vm.user.password
-                })
-                    .then(function () {
-                        // Account created, redirect to home
-                        toastr.success('Account Created')
-                        $location.path('/login');
-                    })
-                    .catch(function (err) {
-                        toastr.error('Error creating account')
-                        err = err.data;
-                        vm.errors = {};
+                }).then(function () {
+                    // Account created, redirect to home
+                    toastr.success('Account Created');
+                    $location.path('/login');
+                }).catch(function (err) {
+                    toastr.error('Error creating account');
+                    err = err.data;
+                    vm.errors = {};
 
-                        // Update validity of form fields that match the mongoose errors
-                        angular.forEach(err.errors, function (error, field) {
-                            form[field].$setValidity('mongoose', false);
-                            vm.errors[field] = error.message;
-                        });
+                    // Update validity of form fields that match the mongoose errors
+                    angular.forEach(err.errors, function (error, field) {
+                        form[field].$setValidity('mongoose', false);
+                        vm.errors[field] = error.message;
                     });
+                });
             }
         };
 

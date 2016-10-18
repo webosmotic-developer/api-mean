@@ -12,16 +12,14 @@ angular.module('apiMeanApp')
                 Auth.signin({
                     email: vm.user.email,
                     password: vm.user.password
-                })
-                    .then(function (data) {
-                        // Logged in, redirect to home
-                        toastr.success('Welcome ' + data.user.name);
-                        $state.go('main.contacts');
-                    })
-                    .catch(function (err) {
-                        toastr.error('Email or password incorrect');
+                }).then(function (data) {
+                    // Logged in, redirect to home
+                    toastr.success('Welcome ' + data.user.name);
+                    $state.go('main.contacts');
+                }).catch(function (err) {
+                    toastr.error('Email or password incorrect');
 
-                    });
+                });
             }
         };
 
