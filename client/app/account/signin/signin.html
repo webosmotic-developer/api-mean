@@ -1,5 +1,5 @@
-<div ng-if="signin.isSignIngIn">
-    <md-progress-linear class="md-accent" md-mode="indeterminate"></md-progress-linear>
+<div style="min-height: 25px;">
+    <md-progress-linear ng-if="signin.isSignIngIn" class="md-accent" md-mode="indeterminate"></md-progress-linear>
 </div>
 <md-content class="md-padding">
     <md-card class="login-card">
@@ -20,7 +20,7 @@
                     <md-icon md-font-set="fa fa-lg fa-twitter m-t-10"></md-icon>
                 </md-button>
             </div>
-            <form name="form" ng-submit="signin.fnSignIn(form)" novalidate>
+            <form name="form" ng-submit="form.$valid && signin.fnSignIn(form)" novalidate>
                 <div layout="column">
                     <md-input-container class="md-icon-float md-block">
                         <label>Email</label>

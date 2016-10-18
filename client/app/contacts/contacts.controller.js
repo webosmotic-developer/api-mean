@@ -10,19 +10,21 @@ angular.module('apiMeanApp')
             vm.isContactsLoaded = true;
             Auth.isLoggedInAsync(function (isLoggedInAsync) {
                 if (isLoggedInAsync) {
-                    vm.contactsArray = User.getContacts({id: vm.user._id});
-                    vm.isContactsLoaded = false;
+                    User.getContacts({id: vm.user._id},
+                        function (data) {
+                            vm.contactsArray = data;
+                            vm.isContactsLoaded = false;
+                            socket.syncUpdates('contact', vm.contactsArray);
+                        });
                 }
             });
         };
 
         vm.fnOpenContactModel = function (contact) {
             $mdDialog.show({
-                locals: {user: vm.user, contact: contact},
+                locals: {user: vm.user, contact: angular.copy(contact)},
                 templateUrl: 'app/contacts/contact/contact.html',
                 controller: 'ContactCtrl as conCtrl'
-            }).then(function () {
-                vm.fnGetContacts();
             });
         };
 
@@ -36,7 +38,6 @@ angular.module('apiMeanApp')
             $mdDialog.show(confirm).then(function () {
                 ContactsService.remove({id: id}, function () {
                     toastr.success('Contact removed successfully.');
-                    vm.fnGetContacts();
                 }, function () {
                     toastr.error('Contact not remove');
                 });

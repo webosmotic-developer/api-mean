@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('apiMeanApp')
-    .controller('userModalCtrl', function ($mdDialog, editUser, User, toastr) {
+    .controller('UserModalCtrl', function ($mdDialog, editUser, User, toastr) {
         var vm = this;
         vm.user = editUser;
 

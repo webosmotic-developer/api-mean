@@ -5,14 +5,19 @@ angular.module('apiMeanApp')
 
         var vm = this;
         vm.isUsersLoading = false;
-        vm.isAdmin = Auth.isAdmin();
         vm.user = Auth.getCurrentUser();
 
         vm.fnGetUsers = function () {
             vm.isUsersLoading = true;
-            User.query(function (data) {
-                vm.usersArray = data;
-                vm.isUsersLoading = false;
+            Auth.isLoggedInAsync(function (isLoggedInAsync) {
+                if (isLoggedInAsync && Auth.isAdmin()) {
+                    User.query(function (data) {
+                        vm.usersArray = data;
+                        vm.isUsersLoading = false;
+                    }, function (err) {
+                        vm.isUsersLoading = false;
+                    });
+                }
             });
         };
 
@@ -42,7 +47,7 @@ angular.module('apiMeanApp')
             $mdDialog.show({
                 locals: {editUser: angular.copy(user)},
                 templateUrl: 'app/account/settings/userModal/userModal.html',
-                controller: 'userModalCtrl as userModal'
+                controller: 'UserModalCtrl as userModal'
             }).then(function () {
                 vm.fnGetUsers();
             });
@@ -66,8 +71,6 @@ angular.module('apiMeanApp')
         };
 
         vm.fnSettings = function () {
-            if (vm.isAdmin) {
-                vm.fnGetUsers();
-            }
+            vm.fnGetUsers();
         }
     });

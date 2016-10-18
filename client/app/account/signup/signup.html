@@ -17,7 +17,7 @@
                     <md-icon md-font-set="fa fa-lg fa-twitter m-t-10"></md-icon>
                 </md-button>
             </div>
-            <form name="form" ng-submit="signup.fnSignUp(form)" novalidate>
+            <form name="form" ng-submit="form.$valid && signup.fnSignUp(form)" novalidate>
                 <div layout="column">
                     <md-input-container>
                         <label>Name</label>
