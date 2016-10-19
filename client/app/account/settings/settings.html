@@ -114,7 +114,8 @@
                 <md-progress-linear class="md-accent" md-mode="indeterminate"></md-progress-linear>
             </div>
             <md-content>
-                <md-list-item class="md-2-line" ng-repeat="user in setting.usersArray" ng-cloak>
+                <md-list-item class="md-2-line" ng-repeat="user in setting.usersArray | filter:{role:'!admin'}"
+                              ng-cloak>
                     <div class="md-list-item-text" layout="column">
                         <div class="md-title">{{ user.name }}</div>
                         <div class="md-caption">Email: {{ user.email }}</div>
