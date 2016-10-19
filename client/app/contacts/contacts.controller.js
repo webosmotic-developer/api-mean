@@ -5,6 +5,11 @@ angular.module('apiMeanApp')
         var vm = this;
         vm.isContactsLoaded = false;
         vm.user = Auth.getCurrentUser();
+        vm.showSearch = false;
+
+        vm.fnToggleSearch = function(){
+            vm.showSearch = !vm.showSearch ;
+        };
 
         vm.fnGetContacts = function () {
             vm.isContactsLoaded = true;

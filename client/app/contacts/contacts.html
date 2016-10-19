@@ -1,15 +1,28 @@
 <md-content ng-cloak ng-init="contacts.fnInit()" layout="column" layout-fill flex>
     <md-toolbar class="md-whiteframe-2dp md-hue-1">
-        <div class="md-toolbar-tools">
+        <div class="md-toolbar-tools" ng-show="!contacts.showSearch">
             <h2 ui-sref="main.contacts"><a href="javascript:void(0);">Contacts</a></h2>
             <span flex=""></span>
-
+            <md-button class="md-fab md-mini md-primary" ng-click="contacts.fnToggleSearch()">
+                <md-icon md-font-set="fa fa-lg fa-search m-t-10"></md-icon>
+                <md-tooltip md-direction="bottom">search</md-tooltip>
+            </md-button>
             <md-button class="md-fab md-mini md-primary" aria-label="Favorite"
                        ng-click="contacts.fnOpenContactModel();">
-                <md-tooltip md-direction="left">
+                <md-tooltip md-direction="bottom">
                     Add Contact
                 </md-tooltip>
                 <md-icon md-font-set="fa fa-2x fa-plus"></md-icon>
+            </md-button>
+        </div>
+        <div class="md-toolbar-tools" ng-show="contacts.showSearch">
+            <md-input-container md-no-float flex>
+                <md-icon md-font-set="fa fa-search p-l-5"></md-icon>
+                <input type="text" placeholder="search" ng-model="search"/>
+            </md-input-container>
+            <md-button class="md-fab md-mini md-primary" ng-click="contacts.fnToggleSearch()">
+                <md-icon md-font-set="fa fa-lg fa-close m-t-10"></md-icon>
+                <md-tooltip md-direction="bottom">close</md-tooltip>
             </md-button>
         </div>
     </md-toolbar>
@@ -22,7 +35,7 @@
 
     <div layout="column" layout-fill flex>
         <md-content>
-            <md-list-item class="md-2-line" ng-repeat="cont in contacts.contactsArray">
+            <md-list-item class="md-2-line" ng-repeat="cont in contacts.contactsArray  | filter:search">
                 <div class="md-list-item-text" layout="column">
                     <div class="md-title">{{ cont.name }}</div>
                     <div class="md-caption">Email: {{ cont.email }}</div>
