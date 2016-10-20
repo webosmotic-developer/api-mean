@@ -27,6 +27,12 @@ angular.module('apiMeanApp')
                 },
                 update: {
                     method: 'PUT'
+                },
+                logout: {
+                    method: 'POST',
+                    params: {
+                        id: 'logout'
+                    }
                 }
             });
     });

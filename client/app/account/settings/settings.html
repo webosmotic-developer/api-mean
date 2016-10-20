@@ -122,6 +122,8 @@
                         <div class="md-caption">Role: {{ user.role }} | Provider: {{ user.provider}}</div>
                     </div>
                     <div class="md-secondary">
+                        <md-icon md-font-set="fa fa-lg fa-book" class="md-primary"
+                                 ng-click="setting.fnOpenContactModal(user)"></md-icon>
                         <md-icon ng-click="setting.fnAddUser(user);" class="md-primary"
                                  md-font-set="fa fa-lg fa-edit"></md-icon>
                         <md-icon ng-click="setting.fnDeleteUser($event,user._id)" class="md-warn"

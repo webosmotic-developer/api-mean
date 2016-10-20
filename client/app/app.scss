@@ -2,21 +2,14 @@
  * App-wide Styles
  */
 
- .main-shell {
-   .profile-container {
-     height: 100%;
-     font-size: 14px;
-
-     .profile-name {
-       font-weight: 500;
-     }
-   }
- }
-.active{
+.active {
     background-color: #7986cb;
     color: #fff;
 }
 
+md-icon {
+    cursor: pointer;
+}
 
 // Component styles are injected through grunt
 // injector

@@ -1,54 +1,58 @@
-<div style="min-height: 25px;">
-    <md-progress-linear ng-if="signin.isSignIngIn" class="md-accent" md-mode="indeterminate"></md-progress-linear>
-</div>
-<md-content class="md-padding">
-    <md-card class="login-card">
-        <md-toolbar class="md-hue-1" layout="column" layout-align="center center"><h2 class="md-headline">Sign In</h2>
-        </md-toolbar>
-        <md-card-content>
-            <div layout="row" layout-align="center center">
-                <md-button class="md-fab md-mini md-warn" aria-label="google"
-                           ng-click="signin.fnSignInOauth('google')">
-                    <md-icon md-font-set="fa fa-lg fa-google-plus m-t-10"></md-icon>
-                </md-button>
-                <md-button class="md-fab md-mini md-primary" aria-label="facebook"
-                           ng-click="signin.fnSignInOauth('facebook')">
-                    <md-icon md-font-set="fa fa-lg fa-facebook m-t-10"></md-icon>
-                </md-button>
-                <md-button class="md-fab md-mini md-accent" aria-label="twitter"
-                           ng-click="signin.fnSignInOauth('twitter')">
-                    <md-icon md-font-set="fa fa-lg fa-twitter m-t-10"></md-icon>
-                </md-button>
-            </div>
-            <form name="form" ng-submit="form.$valid && signin.fnSignIn(form)" novalidate>
-                <div layout="column">
-                    <md-input-container class="md-icon-float md-block">
-                        <label>Email</label>
-                        <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-fw fa-envelope m-t-5"></md-icon>
-                        <input required type="email" name="email" ng-model="signin.user.email"/>
+<md-content>
+    <div style="min-height: 20px;">
+        <md-progress-linear ng-if="signin.isSignIngIn" class="md-accent" md-mode="indeterminate"></md-progress-linear>
+    </div>
+    <md-content class="md-padding">
+        <md-card class="login-card">
+            <md-toolbar class="md-hue-1" layout="column" layout-align="center center">
+                <h2 class="md-headline">Sign In</h2>
+            </md-toolbar>
+            <md-card-content>
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-fab md-mini md-warn" aria-label="google"
+                               ng-click="signin.fnSignInOauth('google')">
+                        <md-icon md-font-set="fa fa-lg fa-google-plus m-t-10"></md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-primary" aria-label="facebook"
+                               ng-click="signin.fnSignInOauth('facebook')">
+                        <md-icon md-font-set="fa fa-lg fa-facebook m-t-10"></md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-accent" aria-label="twitter"
+                               ng-click="signin.fnSignInOauth('twitter')">
+                        <md-icon md-font-set="fa fa-lg fa-twitter m-t-10"></md-icon>
+                    </md-button>
+                </div>
+                <form name="form" ng-submit="form.$valid && signin.fnSignIn(form)" novalidate>
+                    <div layout="column">
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Email</label>
+                            <md-icon class="md-primary md-hue-1"
+                                     md-font-set="fa fa-lg fa-fw fa-envelope m-t-5"></md-icon>
+                            <input required type="email" name="email" ng-model="signin.user.email"/>
 
-                        <div ng-messages="form.email.$error">
-                            <div ng-message="required">This is required.</div>
-                            <div ng-message="email">This field must be a valid email address.</div>
-                        </div>
-                    </md-input-container>
-                </div>
-                <div layout="column">
-                    <md-input-container class="md-block">
-                        <label>Password</label>
-                        <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-fw fa-lock m-t-5"></md-icon>
-                        <input required type="password" name="password" ng-model="signin.user.password">
+                            <div ng-messages="form.email.$error">
+                                <div ng-message="required">This is required.</div>
+                                <div ng-message="email">This field must be a valid email address.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="column">
+                        <md-input-container class="md-block">
+                            <label>Password</label>
+                            <md-icon class="md-primary md-hue-1" md-font-set="fa fa-lg fa-fw fa-lock m-t-5"></md-icon>
+                            <input required type="password" name="password" ng-model="signin.user.password">
 
-                        <div ng-messages="form.password.$error">
-                            <div ng-message="required">This is required.</div>
-                        </div>
-                    </md-input-container>
-                </div>
-                <div layout="column">
-                    <md-button class="md-raised md-primary md-hue-1" type="submit">Sign in</md-button>
-                    <md-button class=" md-primary" type="submit" ui-sref="main.signup">Sign up</md-button>
-                </div>
-            </form>
-        </md-card-content>
-    </md-card>
+                            <div ng-messages="form.password.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="column">
+                        <md-button class="md-raised md-primary md-hue-1" type="submit">Sign in</md-button>
+                        <md-button class=" md-primary" type="submit" ui-sref="main.signup">Sign up</md-button>
+                    </div>
+                </form>
+            </md-card-content>
+        </md-card>
+    </md-content>
 </md-content>

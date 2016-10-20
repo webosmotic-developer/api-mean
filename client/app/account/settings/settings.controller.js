@@ -70,6 +70,14 @@ angular.module('apiMeanApp')
             });
         };
 
+        vm.fnOpenContactModal = function(user){
+            $mdDialog.show({
+                locals: {user:user},
+                templateUrl: 'app/account/settings/contactDisplayModal/contactDisplayModal.html',
+                controller: 'ContactModalDisplayCtrl as contactDisplay'
+            });
+        };
+
         vm.fnSettings = function () {
             vm.fnGetUsers();
         }

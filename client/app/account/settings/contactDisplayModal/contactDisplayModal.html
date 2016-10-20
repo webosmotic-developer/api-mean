@@ -1,0 +1,28 @@
+<md-dialog style="width: 50%;" ng-init="contactDisplay.fnInit()">
+
+    <md-toolbar>
+        <div layout="row" class="md-toolbar-tools" layout-align="space-between center">
+            <div>
+                <span ng-bind="contactDisplay.user.name"></span>
+            </div>
+
+            <md-button ng-click="contactDisplay.fnCloseDialogCancel()">
+                <md-icon md-font-set="fa fa-lg fa-close m-t-5"></md-icon>
+                <md-tooltip>close</md-tooltip>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content>
+        <md-list-item class="md-2-line" ng-repeat="cont in contactDisplay.contactsArray">
+            <div class="md-list-item-text" layout="column">
+                <div class="md-title">{{ cont.name }}</div>
+                <div class="md-caption">Email: {{ cont.email }}</div>
+                <div class="md-caption">Phone: {{ cont.phone }}</div>
+            </div>
+            <md-divider></md-divider>
+        </md-list-item>
+        <h3 class="md-2-line" layout="column" layout-align="center center" ng-if="!contactDisplay.contactsArray.length">
+            No Contacts to Display</h3>
+    </md-content>
+
+</md-dialog>

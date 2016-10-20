@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('apiMeanApp')
-    .controller('MainCtrl', function ($mdSidenav, $mdDialog, $scope, $location, Auth) {
+    .controller('MainCtrl', function ($mdSidenav, $mdDialog, $scope, $location, Auth, User) {
 
         var vm = this;
         vm.isLoggedIn = Auth.isLoggedIn;
@@ -9,8 +9,10 @@ angular.module('apiMeanApp')
         vm.getCurrentUser = Auth.getCurrentUser;
 
         vm.fnSignOut = function () {
-            Auth.logout();
-            $location.path('/sign-in');
+            User.logout(function(){
+                Auth.logout();
+                $location.path('/sign-in');
+            });
         };
 
         vm.fnIsActive = function (route) {
