@@ -11,7 +11,8 @@ module.exports = function (app) {
 
     //CORS middleware
     var allowCrossDomain = function (req, res, next) {
-        var allowedOrigins = ['http://webosmotic.com', 'http://localhost:8100', 'https://contacts-react-bootstrap.herokuapp.com',
+        var allowedOrigins = ['http://webosmotic.com', 'http://localhost:8100',
+            'https://contacts-react-bootstrap.herokuapp.com', 'http://contactdemo.javeeinfotech.com',
             'http://localhost:3000', 'http://localhost:9000'];
         var origin = req.headers.origin;
         if (allowedOrigins.indexOf(origin) > -1) {
